@@ -1,7 +1,7 @@
 import express from "express";
 import tokenController from "../controllers/TokenController";
-const router = express.Router();
+const jwkRouter = express.Router();
 
-router.route("/jwks.json").get(tokenController.getJWK);
+jwkRouter.route("/jwks.json").get(tokenController.getJWK);
 
-export  default router;
+export  default jwkRouter;

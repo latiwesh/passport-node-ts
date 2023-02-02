@@ -19,9 +19,16 @@ class AuthenticationService {
         return isPassportValid;
     }
 
-    async getToken(user: User): Promise<string>{
+    async getToken(user: User): Promise<Token>{
         const {privateKey} = getRSAKeys();
-        return jwt.sign({id: user.userId, scopes: user.scopes}, privateKey, {expiresIn: 24 * 60 * 60, algorithm: 'RS256'});
+        let expiresIn = 24 * 60 * 60;
+        const accessToken = jwt.sign({id: user.userId, scopes: user.scopes}, privateKey, {expiresIn: 24 * 60 * 60, algorithm: 'RS256'});
+        const token: Token = {
+            access_token: accessToken,
+            scope: user.scopes,
+            expires_in: expiresIn
+        };
+        return token
     }
 
     async getJWK(): Promise<any> {

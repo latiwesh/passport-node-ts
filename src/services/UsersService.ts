@@ -4,7 +4,7 @@ import userRepository from '../DB/DBRepository';
 class UserService{
 
    async findUser (email: string) : Promise<User> {
-    let query = 'SELECT Users.email,UserCredentials.password FROM Users JOIN UserCredentials ON Users.userId = UserCredentials.userId WHERE Users.email = ' +"'"+ email +"'";
+    let query = 'SELECT Users.email,UserCredentials.password,UserCredentials.scopes FROM Users JOIN UserCredentials ON Users.userId = UserCredentials.userId WHERE Users.email = ' +"'"+ email +"'";
     const users =  await userRepository.executeSelectQuery(query);
     
     if (!users) {

@@ -16,7 +16,7 @@ class TokenController {
            }
             else{
                 const token = await authenticationService.getToken(user);
-                res.status(200).json({token: token});
+                res.status(200).json(token);
             } 
         } catch (error) {
             next(error);

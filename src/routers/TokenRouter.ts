@@ -1,7 +1,7 @@
 import express from "express";
 import tokenController from "../controllers/TokenController";
-const router = express.Router();
+const tokenRouter = express.Router();
 
-router.route("/token").post(tokenController.authenticateUser);
+tokenRouter.route("/token").post(tokenController.authenticateUser);
 
-export default router;
+export default tokenRouter;
