@@ -1,17 +1,12 @@
-import userRepository from '../DB/DBRepository';
+import userRepository from '../database/UsersRespository';
 
 class UserService {
   async findUser(email: string): Promise<User> {
-    const query =
-      'SELECT Users.email,UserCredentials.password,UserCredentials.scopes FROM Users JOIN UserCredentials ON Users.userId = UserCredentials.userId WHERE Users.email = ' +
-      "'" +
-      email +
-      "'";
-    const users = await userRepository.executeSelectQuery(query);
+    const users = await userRepository.getUserByEmail(email);
 
-    if (!users) {
+    if (!users || users.length === 0) {
       console.log('User is not foud');
-      const err = new Error('Provided credentials are not valid');
+      const err = new Error('User is not foud');
       throw err;
     }
 

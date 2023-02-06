@@ -105,7 +105,7 @@
     "src/**/*.ts",
     "test/**/*.ts"
   ],
-  "exclude": ["node_modules", "build", "**/*.spec.ts"],
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"],
   "ts-node": {
     "files": true
   }
