@@ -1,0 +1,9 @@
+version: "3.4"
+
+services:
+  passport:
+    build:
+      context: .
+      target: production
+    ports:
+      - 8084:8084
