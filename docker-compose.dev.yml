@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  api:
+    build:
+      context: .
+      target: deployment
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - 8084:8084
+    command: npm run dev

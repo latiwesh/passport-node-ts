@@ -13,7 +13,7 @@ app.use('/api/v1', tokenRouter);
 app.use('/.well-known', jwkRouter);
 
 const port = sanitizedConfig.PORT | 8084;
-
+// just to see if we can sync
 app.listen(process.env.PORT, () => {
   console.log(`app is running and listening on port: ${port}`);
 });
